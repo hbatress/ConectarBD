@@ -26,6 +26,7 @@ connection.connect((error) => {
   }
 });
 
+
 // Configura la ruta para recibir los datos del formulario
 app.post('/guardar', (req, res) => {
   const nombre = req.body.nombre;

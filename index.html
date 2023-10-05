@@ -1,61 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Enviar información a la base de datos</title>
-<style>
-    /* Estilos CSS para el formulario */
-    form {
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    margin: 0 auto;
-    }
-    input {
-    margin-bottom: 10px;
-    }
-    input[type="submit"] {
-    background-color: #4CAF50;
-    color: white;
-    }
-</style>
+  <title>Enviar nombre a la página web</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-<h1>Enviar información a la base de datos</h1>
-<form id="formulario">
-    <input type="text" id="nombre" placeholder="Nombre">
-    <input type="email" id="correo" placeholder="Correo electrónico">
-    <input type="submit" value="Enviar">
-</form>
+  <h1>Enviar nombre a la página web</h1>
+  <input type="text" id="nombre" placeholder="Nombre">
+  <button id="enviar">Enviar</button>
 
-<script>
-    // Evento para enviar los datos del formulario al servidor
-    document.getElementById("formulario").addEventListener("submit", function(event) {
-      event.preventDefault(); // Evita que el formulario se envíe de forma predeterminada
+  <script>
+    // Evento para enviar el nombre al servidor
+    $("#enviar").click(function() {
+    var nombre = $("#nombre").val();
 
-      // Obtén los valores del formulario
-    var nombre = document.getElementById("nombre").value;
-    var correo = document.getElementById("correo").value;
+      // Crea un objeto JSON con el campo 'nombre'
+    var data = { nombre: nombre };
 
-      // Crea un objeto FormData para enviar los datos al servidor
-      var formData = new FormData();
-      formData.append("nombre", nombre);
-      formData.append("correo", correo);
-
-      // Envía los datos al servidor utilizando una solicitud HTTP POST
-      fetch("/guardar'", {
+      // Envía el nombre al servidor utilizando una solicitud HTTP POST
+    $.ajax({
+        url: "/guardar",
         method: "POST",
-        body: formData
-      })
-      .then(function(response) {
-        return response.text();
-      })
-      .then(function(result) {
-        console.log(result); // Maneja la respuesta del servidor aquí
-      })
-      .catch(function(error) {
-        console.error("Error al enviar los datos: ", error);
-      });
+        data: JSON.stringify(data), // Convierte el objeto a JSON
+        contentType: "application/json; charset=utf-8", // Especifica el tipo de contenido
+        dataType: "json", // Espera una respuesta JSON del servidor
+        success: function(response) {
+          console.log(response); // Maneja la respuesta del servidor aquí
+        },
+        error: function(error) {
+        console.error("Error al enviar el nombre: ", error);
+        }
     });
-  </script>
+    });
+</script>
 </body>
 </html>
