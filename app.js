@@ -2,7 +2,7 @@ require('dotenv').config()
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const { databaseSer } = require('./services/databaseSer');
+const { databaseSer } = require('./servicesBD/databaseSer');
 
 
 const app = express();
