@@ -1,23 +1,38 @@
-const axios = require('axios');
-
 function enviarDatos(nombre, correo) {
   const dataToSend = {
     nombre,
     correo
   };
 
-  axios.post('http://localhost:3000/cliente', dataToSend)
-    .then(response => {
-      console.log(response.data);
+  fetch('http://localhost:3000/cliente', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(dataToSend)
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Respuesta del servidor:', data);
+
     })
     .catch(error => {
-      console.error(error);
+      console.error('Error al enviar los datos:', error);
     });
 }
 
-document.getElementById('enviar').addEventListener('click', function(event) {
-  const nombre = document.getElementById('nombre').value;
-  const correo = document.getElementById('correo').value;
+document.addEventListener('DOMContentLoaded', function() {
+  const enviarButton = document.getElementById('enviar');
+  const nombreInput = document.getElementById('nombre');
+  const correoInput = document.getElementById('correo');
 
-  enviarDatos(nombre, correo);
+  enviarButton.addEventListener('click', function(event) {
+    const nombre = nombreInput.value;
+    const correo = correoInput.value;
+
+    enviarDatos(nombre, correo);
+          // Limpiar los campos de entrada después de enviar los datos con éxito
+          nombreInput.value = '';
+          correoInput.value = '';
+  });
 });
