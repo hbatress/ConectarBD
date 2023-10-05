@@ -1,37 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Enviar nombre a la página web</title>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook</title>
+  
 </head>
 <body>
-  <h1>Enviar nombre a la página web</h1>
-  <input type="text" id="nombre" placeholder="Nombre">
-  <button id="enviar">Enviar</button>
+    
+    <section class="container">
 
-  <script>
-    // Evento para enviar el nombre al servidor
-    $("#enviar").click(function() {
-    var nombre = $("#nombre").val();
-
-      // Crea un objeto JSON con el campo 'nombre'
-    var data = { nombre: nombre };
-
-      // Envía el nombre al servidor utilizando una solicitud HTTP POST
-    $.ajax({
-        url: "/guardar",
-        method: "POST",
-        data: JSON.stringify(data), // Convierte el objeto a JSON
-        contentType: "application/json; charset=utf-8", // Especifica el tipo de contenido
-        dataType: "json", // Espera una respuesta JSON del servidor
-        success: function(response) {
-          console.log(response); // Maneja la respuesta del servidor aquí
-        },
-        error: function(error) {
-        console.error("Error al enviar el nombre: ", error);
-        }
-    });
-    });
-</script>
+            <div class="titulo">
+                <h1>CREAR PUBLICACION</h1></div>
+            <div class="datos">
+                <label for="contenido">Contenido de publicación</label>
+                <input class="input" type="text" name="Comentario" id="Comentario">
+                <br><br>
+                <label for="imagen">Imagen</label>
+                <input class="input" type="text" name="url" id="url">
+                <button id="boton">Agregar</button>
+            </div>
+    
+        </div>
+        <div class="mostrar" id="mostrar"></div> 
+      </div>
+    
+        <div class="boton">
+            
+        </div>
+        
+    </section>
+      <script src="./next.js"></script>
 </body>
 </html>
