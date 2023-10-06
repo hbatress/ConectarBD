@@ -3,46 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Enviar Datos a la Base de Datos</title>
 </head>
 <body>
-  <form id="myForm">
-    <input type="text" id="Usuario" placeholder="Usuario">
-    <button type="button" id="enviar">Enviar</button>
-  </form>
-  <form id="myForm_publicaciones">
-    
-    <input type="text" id="usuarioInput" list="usuariosList">
-    <datalist id="usuariosList"></datalist>
-    <input type="hidden" id="hiddenUserId" name="userId">
-    <input type="text" id="Comentario" placeholder="Comentario">
-    <button type="button" id="enviarComentario">Enviar</button>
-  </form>
-  <table id="clientesTable">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Usuario</th>
-        </tr>
-    </thead>
-    <tbody>
-        <!-- Aquí se mostrarán los datos -->
-    </tbody>
-</table>
-<table id="PublicacionesTable">
-  <thead>
-      <tr>
-          <th>ID</th>
-          <th>Contenido</th>
-          <th>Nombre de Usuario</th> <!-- Cambia el encabezado de la columna -->
-      </tr>
-  </thead>
-  <tbody>
-      <!-- Aquí se mostrarán los datos -->
-  </tbody>
-</table>
+  <div id="menu">
+    <button id="btnCliente">Cliente</button>
+    <button id="btnPublicacion">Publicación</button>
+  </div>
 
-</table>
+  <div id="usuariosSection" class="Usuario">
+    <form id="myForm">
+      <input type="text" id="Usuario" placeholder="Usuario">
+      <button type="button" id="enviar">Iniciar</button>
+    </form>
+  </div>
+
+  <div id="publicacionesSection" class="publicaciones">
+    <form id="myForm_publicaciones">
+      <input type="text" id="usuarioInput" list="usuariosList">
+      <datalist id="usuariosList"></datalist>
+      <input type="hidden" id="hiddenUserId" name="userId">
+      <input type="text" id="Comentario" placeholder="Comentario">
+      <button type="button" id="enviarComentario">Publicar</button>
+    </form>
+  </div>
+
+  <div id="tablaCliente" class="tabla_Cliente">
+    <table id="clientesTable">
+      <thead>
+          <tr>
+              <th>ID</th>
+              <th>Usuario</th>
+          </tr>
+      </thead>
+      <tbody>
+          <!-- Aquí se mostrarán los datos -->
+      </tbody>
+    </table>
+  </div>
+
+  <div id="tablaPublicaciones" class="tabla_Publicacion">
+    <table id="PublicacionesTable">
+      <thead>
+          <tr>
+              <th>ID</th>
+              <th>Contenido</th>
+              <th>Nombre de Usuario</th> 
+          </tr>
+      </thead>
+      <tbody>
+          <!-- Aquí se mostrarán los datos -->
+      </tbody>
+    </table>
+  </div>
+
+  <button id="btnVolver" style="display: none;">Volver al Menú</button>
+
   <script type="module" src="./next.js"></script>
 </body>
 </html>
