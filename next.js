@@ -87,9 +87,9 @@ document.addEventListener('DOMContentLoaded', function() {
                   data.forEach(publicacion => {
                       const row = document.createElement('tr');
                       row.innerHTML = `
-                          <td>${publicacion.ID}</td>
+                      <td>${usuariosMap.get(publicacion.Usuario_ID)}</td>
                           <td>${publicacion.Contenido}</td>
-                          <td>${usuariosMap.get(publicacion.Usuario_ID)}</td>
+                          
                       `;
                       tableBody.appendChild(row);
                   });
@@ -163,25 +163,27 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 //nos servira para ocultar y mostrar los diferentes datos
-const btnAgregarUsuario = document.getElementById("btnAgregarUsuario");
-const publicacionesSection = document.getElementById("publicacionesSection");
-const usuariosSection = document.getElementById("usuariosSection");
-const tablaPublicaciones = document.getElementById("tablaPublicaciones");
-const tablaCliente = document.getElementById("tablaCliente");
-const btnVolver = document.getElementById("btnVolver");
+    const btnAgregarUsuario = document.getElementById("btnAgregarUsuario");
+    const publicacionesSection = document.getElementById("publicacionesSection");
+    const usuariosSection = document.getElementById("usuariosSection");
+    const tablaPublicaciones = document.getElementById("tablaPublicaciones");
+    const tablaCliente = document.getElementById("tablaCliente");
+    const btnVolver = document.getElementById("btnVolver");
 
-btnAgregarUsuario.addEventListener("click", function() {
-  publicacionesSection.style.display = "none";
-  tablaPublicaciones.style.display = "none";
-  usuariosSection.style.display = "block";
-  tablaCliente.style.display = "block";
-  btnVolver.style.display = "block";
-});
+    btnAgregarUsuario.addEventListener("click", function() {
+      publicacionesSection.style.display = "none";
+      btnVolver.style.display = "block";
+      tablaPublicaciones.style.display = "none";
+      usuariosSection.style.display = "block";
+      tablaCliente.style.display = "block";
+    
+    });
 
-btnVolver.addEventListener("click", function() {
-  publicacionesSection.style.display = "block";
-  tablaPublicaciones.style.display = "block";
-  usuariosSection.style.display = "none";
-  tablaCliente.style.display = "none";
-  btnVolver.style.display = "none";
-});
+    btnVolver.addEventListener("click", function() {
+      publicacionesSection.style.display = "block";
+      btnVolver.style.display = "none";
+      tablaPublicaciones.style.display = "block";
+      usuariosSection.style.display = "none";
+      tablaCliente.style.display = "none";
+     
+    });
