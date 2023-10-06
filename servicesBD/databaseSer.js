@@ -10,20 +10,33 @@ const databaseSer = () => {
             database : process.env.DB,
         }
     });
-    const table = 'usuarios';
 
-    const getciente = () => {
+    const table = 'usuarios';
+    const table1='publicaciones';
+
+    const getusuario = () => {
         return knex(table).select();
     };
 
-    const Crearcliente = (nombre,correo ) => {
+    const getpublicaciones = () => {
+        return knex(table1).select();
+    };
+
+    const crearusuario = (Nombre ) => {
         return knex(table).insert({
-            nombre: nombre,
-            correo: correo,
+            Nombre: Nombre,
         });
     };
 
-    return {Crearcliente, getciente};
+    const Crearpublicaciones = (Contenido,Usuario_ID ) => {
+        return knex(table1).insert({
+
+            Contenido: Contenido,
+            Usuario_ID: Usuario_ID
+        });
+    };
+
+    return {crearusuario, getusuario,getpublicaciones,Crearpublicaciones};
 };
 
 module.exports = {

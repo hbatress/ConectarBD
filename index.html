@@ -7,20 +7,36 @@
 </head>
 <body>
   <form id="myForm">
-    <input type="text" id="nombre" placeholder="Nombre">
-    <input type="text" id="correo" placeholder="Correo electrónico">
+    <input type="text" id="Usuario" placeholder="Usuario">
     <button type="button" id="enviar">Enviar</button>
+  </form>
+  <form id="myForm_publicaciones">
+    <input type="number" id="ID" placeholder="ID_cliente">
+    <input type="text" id="Comentario" placeholder="Comentario">
+    <button type="button" id="enviarComentario">Enviar</button>
   </form>
   <table id="clientesTable">
     <thead>
         <tr>
-            <th>Nombre</th>
-            <th>Correo electrónico</th>
+            <th>ID</th>
+            <th>Usuario</th>
         </tr>
     </thead>
     <tbody>
         <!-- Aquí se mostrarán los datos -->
     </tbody>
+</table>
+<table id="PublicacionesTable">
+  <thead>
+      <tr>
+          <th>ID</th>
+          <th>Contenido</th>
+          <th>Usuario_ID</th>
+      </tr>
+  </thead>
+  <tbody>
+      <!-- Aquí se mostrarán los datos -->
+  </tbody>
 </table>
   <script type="module" src="./next.js"></script>
 </body>
