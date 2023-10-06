@@ -4,18 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Enviar Datos a la Base de Datos</title>
 </head>
 <body>
-  <div id="menu">
-    <img src="https://www.facebook.com/images/fb_icon_325x325.png" alt="Facebook Logo" class="Logo">
-
-    <button id="btnAgregarUsuario">Agregar Usuario</button>
+  <div id="header">
+    <div>
+      <img src="https://www.facebook.com/images/fb_icon_325x325.png" alt="Facebook Logo" class="Logo">
+    </div>
+    <input type="text" id="search-bar" placeholder="Buscar en Facebook">
+    <div id="icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a> 
+        <a href="#"><i class="fas fa-user-friends"></i></a> 
+        <a href="#"><i class="fas fa-users"></i></a> 
+        <a href="#"><i class="fas fa-store"></i></a> 
+        <a href="#"><i class="fas fa-video"></i></a> 
+        <button id="btnAgregarUsuario">Agregar Usuario</button>
+      </div>
   </div>
+
 
   <div id="publicacionesSection" class="publicaciones">
     <form id="myForm_publicaciones">
-      <input type="text" id="usuarioInput" list="usuariosList">
+      <input type="text" id="usuarioInput" list="usuariosList"placeholder="Nombre de Usuario">
       <datalist id="usuariosList"></datalist>
       <input type="hidden" id="hiddenUserId" name="userId">
       <input type="text" id="Comentario" placeholder="Comentario">
@@ -63,8 +74,6 @@
   <button id="btnVolver" style="display: none;">Volver al Menú</button>
 
   <script type="module" src="./next.js"></script>
-  <script>
 
-  </script>
 </body>
 </html>
