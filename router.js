@@ -20,10 +20,11 @@ module.exports = function(app,databaseSer) {
     });
 
     app.get('/cliente',(req,res)=>{
-        databaseSer.getciente()
-            .then(usuarios => res.json(usuarios))
-            .catch(e => res.status(500).send(e));
+    databaseSer.getciente()
+        .then(usuarios => res.json(usuarios))
+        .catch(e => res.status(500).send(e));
 
-    })
+   });
 
+    
 }

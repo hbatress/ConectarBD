@@ -36,3 +36,22 @@ document.addEventListener('DOMContentLoaded', function() {
           correoInput.value = '';
   });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  fetch('http://localhost:3000/cliente') // Reemplaza con la URL de tu servidor
+      .then(response => response.json())
+      .then(data => {
+          const tableBody = document.querySelector('#clientesTable tbody');
+          data.forEach(cliente => {
+              const row = document.createElement('tr');
+              row.innerHTML = `
+                  <td>${cliente.nombre}</td>
+                  <td>${cliente.correo}</td>
+              `;
+              tableBody.appendChild(row);
+          });
+      })
+      .catch(error => {
+          console.error('Error al obtener los datos:', error);
+      });
+});
