@@ -8,15 +8,8 @@
 </head>
 <body>
   <div id="menu">
-    <button id="btnCliente">Cliente</button>
     <button id="btnPublicacion">Publicación</button>
-  </div>
-
-  <div id="usuariosSection" class="Usuario">
-    <form id="myForm">
-      <input type="text" id="Usuario" placeholder="Usuario">
-      <button type="button" id="enviar">Iniciar</button>
-    </form>
+    <button id="btnAgregarUsuario">Agregar Usuario</button>
   </div>
 
   <div id="publicacionesSection" class="publicaciones">
@@ -29,7 +22,30 @@
     </form>
   </div>
 
-  <div id="tablaCliente" class="tabla_Cliente">
+  <div id="tablaPublicaciones" class="tabla_Publicacion">
+    <h1>Publicaciones</h1>
+    <table id="PublicacionesTable">
+      <thead>
+          <tr>
+              <th>ID</th>
+              <th>Comentario</th>
+              <th>Nombre de Usuario</th> 
+          </tr>
+      </thead>
+      <tbody>
+          <!-- Aquí se mostrarán los datos -->
+      </tbody>
+    </table>
+  </div>
+
+  <div id="usuariosSection" class="Usuario" style="display: none;">
+    <form id="myForm">
+      <input type="text" id="Usuario" placeholder="Usuario">
+      <button type="button" id="enviar">Iniciar</button>
+    </form>
+  </div>
+
+  <div id="tablaCliente" class="tabla_Cliente" style="display: none;">
     <table id="clientesTable">
       <thead>
           <tr>
@@ -43,23 +59,32 @@
     </table>
   </div>
 
-  <div id="tablaPublicaciones" class="tabla_Publicacion">
-    <table id="PublicacionesTable">
-      <thead>
-          <tr>
-              <th>ID</th>
-              <th>Contenido</th>
-              <th>Nombre de Usuario</th> 
-          </tr>
-      </thead>
-      <tbody>
-          <!-- Aquí se mostrarán los datos -->
-      </tbody>
-    </table>
-  </div>
-
   <button id="btnVolver" style="display: none;">Volver al Menú</button>
 
   <script type="module" src="./next.js"></script>
+  <script>
+    const btnAgregarUsuario = document.getElementById("btnAgregarUsuario");
+    const publicacionesSection = document.getElementById("publicacionesSection");
+    const usuariosSection = document.getElementById("usuariosSection");
+    const tablaPublicaciones = document.getElementById("tablaPublicaciones");
+    const tablaCliente = document.getElementById("tablaCliente");
+    const btnVolver = document.getElementById("btnVolver");
+
+    btnAgregarUsuario.addEventListener("click", function() {
+      publicacionesSection.style.display = "none";
+      tablaPublicaciones.style.display = "none";
+      usuariosSection.style.display = "block";
+      tablaCliente.style.display = "block";
+      btnVolver.style.display = "block";
+    });
+
+    btnVolver.addEventListener("click", function() {
+      publicacionesSection.style.display = "block";
+      tablaPublicaciones.style.display = "block";
+      usuariosSection.style.display = "none";
+      tablaCliente.style.display = "none";
+      btnVolver.style.display = "none";
+    });
+  </script>
 </body>
 </html>

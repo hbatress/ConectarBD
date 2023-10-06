@@ -162,49 +162,26 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-const btnCliente = document.getElementById('btnCliente');
-const btnPublicacion = document.getElementById('btnPublicacion');
-const btnVolver = document.getElementById('btnVolver');
-const usuariosSection = document.getElementById('usuariosSection');
-const publicacionesSection = document.getElementById('publicacionesSection');
-const tablaCliente = document.getElementById('tablaCliente');
-const tablaPublicaciones = document.getElementById('tablaPublicaciones');
+//nos servira para ocultar y mostrar los diferentes datos
+const btnAgregarUsuario = document.getElementById("btnAgregarUsuario");
+const publicacionesSection = document.getElementById("publicacionesSection");
+const usuariosSection = document.getElementById("usuariosSection");
+const tablaPublicaciones = document.getElementById("tablaPublicaciones");
+const tablaCliente = document.getElementById("tablaCliente");
+const btnVolver = document.getElementById("btnVolver");
 
-// Oculta los divs iniciales y el botón "Volver"
-usuariosSection.style.display = 'none';
-publicacionesSection.style.display = 'none';
-tablaCliente.style.display = 'none';
-tablaPublicaciones.style.display = 'none';
-
-btnCliente.addEventListener('click', () => {
-  // Muestra el div de "Cliente" y el formulario, y oculta el de "Publicación"
-  usuariosSection.style.display = 'block';
-  publicacionesSection.style.display = 'none';
-  tablaCliente.style.display = 'block';
-  tablaPublicaciones.style.display = 'none';
-  btnCliente.style.display = 'none';
-  btnPublicacion.style.display = 'none';
-  btnVolver.style.display = 'block';
+btnAgregarUsuario.addEventListener("click", function() {
+  publicacionesSection.style.display = "none";
+  tablaPublicaciones.style.display = "none";
+  usuariosSection.style.display = "block";
+  tablaCliente.style.display = "block";
+  btnVolver.style.display = "block";
 });
 
-btnPublicacion.addEventListener('click', () => {
-  // Muestra el div de "Publicación" y el formulario, y oculta el de "Cliente"
-  usuariosSection.style.display = 'none';
-  publicacionesSection.style.display = 'block';
-  tablaCliente.style.display = 'none';
-  tablaPublicaciones.style.display = 'block';
-  btnCliente.style.display = 'none';
-  btnPublicacion.style.display = 'none';
-  btnVolver.style.display = 'block';
-});
-
-btnVolver.addEventListener('click', () => {
-  // Regresa al menú principal y oculta el botón "Volver"
-  usuariosSection.style.display = 'none';
-  publicacionesSection.style.display = 'none';
-  tablaCliente.style.display = 'none';
-  tablaPublicaciones.style.display = 'none';
-  btnCliente.style.display = 'block';
-  btnPublicacion.style.display = 'block';
-  btnVolver.style.display = 'none';
+btnVolver.addEventListener("click", function() {
+  publicacionesSection.style.display = "block";
+  tablaPublicaciones.style.display = "block";
+  usuariosSection.style.display = "none";
+  tablaCliente.style.display = "none";
+  btnVolver.style.display = "none";
 });
