@@ -24,7 +24,7 @@ module.exports = function(app,databaseSer) {
         .then(usuarios => res.json(usuarios))
         .catch(e => res.status(500).send(e));
 
-   });
+});
 
     
 }
