@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const enviarButton = document.getElementById('enviar');
   const ComentarioButton = document.getElementById('enviarComentario');
   const nombreInput = document.getElementById('Usuario');
-  const IDunput = document.getElementById('ID');
+  const IDunput = document.getElementById('hiddenUserId');
   const ComentarioInput = document.getElementById('Comentario');
   enviarButton.addEventListener('click', function(event) {
     const Nombre = nombreInput.value;
@@ -70,24 +70,39 @@ document.addEventListener('DOMContentLoaded', function() {
 
 //muestra los datos del servidor
 document.addEventListener('DOMContentLoaded', function() {
-  fetch('http://localhost:3000/publicaciones') // Reemplaza con la URL de tu servidor
+  // Realiza una solicitud para obtener los datos de usuarios
+  fetch('http://localhost:3000/usuarios')
       .then(response => response.json())
       .then(data => {
-          const tableBody = document.querySelector('#PublicacionesTable tbody');
-          data.forEach(publicaciones => {
-              const row = document.createElement('tr');
-              row.innerHTML = `
-                  <td>${publicaciones.ID}</td>
-                  <td>${publicaciones.Contenido}</td>
-                  <td>${publicaciones.Usuario_ID}</td>
-              `;
-              tableBody.appendChild(row);
+          const usuariosMap = new Map();
+          data.forEach(usuario => {
+              usuariosMap.set(usuario.ID, usuario.Nombre);
           });
+
+          // Luego, realiza una solicitud para obtener los datos de publicaciones
+          fetch('http://localhost:3000/publicaciones')
+              .then(response => response.json())
+              .then(data => {
+                  const tableBody = document.querySelector('#PublicacionesTable tbody');
+                  data.forEach(publicacion => {
+                      const row = document.createElement('tr');
+                      row.innerHTML = `
+                          <td>${publicacion.ID}</td>
+                          <td>${publicacion.Contenido}</td>
+                          <td>${usuariosMap.get(publicacion.Usuario_ID)}</td>
+                      `;
+                      tableBody.appendChild(row);
+                  });
+              })
+              .catch(error => {
+                  console.error('Error al obtener los datos de publicaciones:', error);
+              });
       })
       .catch(error => {
-          console.error('Error al obtener los datos:', error);
+          console.error('Error al obtener los datos de usuarios:', error);
       });
 });
+
 
 //muestra los Comentarios 
 document.addEventListener('DOMContentLoaded', function() {
@@ -108,3 +123,42 @@ document.addEventListener('DOMContentLoaded', function() {
           console.error('Error al obtener los datos:', error);
       });
 });
+
+//muestra el listado de usuario
+document.addEventListener("DOMContentLoaded", function () {
+  const usuarioInput = document.getElementById("usuarioInput");
+  const usuariosList = document.getElementById("usuariosList");
+  const hiddenUserId = document.getElementById("hiddenUserId"); // Agrega un campo oculto para almacenar el ID.
+
+  fetch("http://localhost:3000/usuarios")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Error al obtener datos de usuarios");
+      }
+      return response.json();
+    })
+    .then((usuarios) => {
+      usuarios.forEach((usuario) => {
+        const option = document.createElement("option");
+        option.value = usuario.Nombre;
+        option.setAttribute("data-id", usuario.ID); // Establece un atributo 'data-id' con el ID.
+        usuariosList.appendChild(option);
+      });
+    })
+    .catch((error) => {
+      console.error(error);
+      // Puedes manejar el error de manera apropiada aquí, como mostrar un mensaje de error al usuario.
+    });
+
+  // Manejar el evento de selección en el datalist.
+  usuarioInput.addEventListener("input", function () {
+    const selectedOption = document.querySelector(`option[value="${usuarioInput.value}"]`);
+    if (selectedOption) {
+      const userId = selectedOption.getAttribute("data-id");
+      hiddenUserId.value = userId; // Almacena el ID en un campo oculto.
+    } else {
+      hiddenUserId.value = ""; // Limpiar el ID si no se selecciona una opción válida.
+    }
+  });
+});
+

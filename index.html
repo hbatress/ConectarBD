@@ -11,7 +11,10 @@
     <button type="button" id="enviar">Enviar</button>
   </form>
   <form id="myForm_publicaciones">
-    <input type="number" id="ID" placeholder="ID_cliente">
+    
+    <input type="text" id="usuarioInput" list="usuariosList">
+    <datalist id="usuariosList"></datalist>
+    <input type="hidden" id="hiddenUserId" name="userId">
     <input type="text" id="Comentario" placeholder="Comentario">
     <button type="button" id="enviarComentario">Enviar</button>
   </form>
@@ -31,12 +34,14 @@
       <tr>
           <th>ID</th>
           <th>Contenido</th>
-          <th>Usuario_ID</th>
+          <th>Nombre de Usuario</th> <!-- Cambia el encabezado de la columna -->
       </tr>
   </thead>
   <tbody>
       <!-- Aquí se mostrarán los datos -->
   </tbody>
+</table>
+
 </table>
   <script type="module" src="./next.js"></script>
 </body>
