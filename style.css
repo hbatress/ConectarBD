@@ -70,3 +70,10 @@ body {
     display: block;
   }
   
+  #btnAgregarUsuario{
+    background-color: aqua;
+  }
+  .Logo{
+    width: 10px;
+    left: 10px;
+  }

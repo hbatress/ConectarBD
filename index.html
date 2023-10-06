@@ -8,7 +8,8 @@
 </head>
 <body>
   <div id="menu">
-    <button id="btnPublicacion">Publicación</button>
+    <img src="https://www.facebook.com/images/fb_icon_325x325.png" alt="Facebook Logo" class="Logo">
+
     <button id="btnAgregarUsuario">Agregar Usuario</button>
   </div>
 
@@ -63,28 +64,7 @@
 
   <script type="module" src="./next.js"></script>
   <script>
-    const btnAgregarUsuario = document.getElementById("btnAgregarUsuario");
-    const publicacionesSection = document.getElementById("publicacionesSection");
-    const usuariosSection = document.getElementById("usuariosSection");
-    const tablaPublicaciones = document.getElementById("tablaPublicaciones");
-    const tablaCliente = document.getElementById("tablaCliente");
-    const btnVolver = document.getElementById("btnVolver");
 
-    btnAgregarUsuario.addEventListener("click", function() {
-      publicacionesSection.style.display = "none";
-      tablaPublicaciones.style.display = "none";
-      usuariosSection.style.display = "block";
-      tablaCliente.style.display = "block";
-      btnVolver.style.display = "block";
-    });
-
-    btnVolver.addEventListener("click", function() {
-      publicacionesSection.style.display = "block";
-      tablaPublicaciones.style.display = "block";
-      usuariosSection.style.display = "none";
-      tablaCliente.style.display = "none";
-      btnVolver.style.display = "none";
-    });
   </script>
 </body>
 </html>
